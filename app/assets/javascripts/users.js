@@ -1,10 +1,12 @@
 /* global $, Stripe */
 //Document ready.
-$(document)on.('turbolinks:load', function(){
+$(document).on('turbolinks:load', function(){
   var theForm = $('#pro_form');
   var submitBtn = $('#form-signup-btn');
+  
   //Set Stripe public key
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
+  
   //When user clicks form submit btn
   submitBtn.click(function(event){
     //prevent default submission behavior
@@ -23,17 +25,19 @@ $(document)on.('turbolinks:load', function(){
     //Validate card number.
     if (!Stripe.card.validateCardNumber(ccNum)) {
       error = true;
-      alert("The credit card number appears to be invalid")
+      alert("The credit card number appears to be invalid");
     }
+    
     //Validate CVC code
     if (!Stripe.card.validateCVC(cvcNum)) {
       error = true;
-      alert("The credit card number appears to be invalid")
+      alert("The CVC code appears to be invalid");
     }
+    
     //Validate expiration date
     if (!Stripe.card.validateExpiry(expMonth, expYear)) {
       error = true;
-      alert("The credit card expiration date appears to be invalid")
+      alert("The expiration date appears to be invalid");
     }
     
     if (error) {
@@ -53,10 +57,8 @@ $(document)on.('turbolinks:load', function(){
     
   });
   
-  
-
   //Stripe will return back a card token
-  function StripeResponseHandler(status, response) {
+  function stripeResponseHandler(status, response) {
     //Get the token from the response
     var token = response.id;
     
