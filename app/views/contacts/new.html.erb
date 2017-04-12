@@ -1,28 +1,25 @@
-<div class="container">
-  <div class="row">
-    
-    <h3 class="text-center">Contact Us</h3>
-    
-    <div class="col-md-4 col-md-offset-4">
-
-      <div class="well">
+<div class="ui container">
+  <div class="ui two column centered grid">
+    <div class="column">
+      <div class="ui form">
+        <h2 class="ui dividing header">Contact Us</h2>
         <%= form_for @contact do |f| %>
-          <div class="form-group">
+          <div class="field">
             <%= f.label :name %>
-            <%= f.text_field :name, class: "form-control" %>
+            <%= f.text_field :name %>
           </div>
   
-          <div class="form-group">
+          <div class="field">
             <%= f.label :email %>
-            <%= f.text_field :email, class: "form-control" %>
+            <%= f.text_field :email %>
           </div>
   
-          <div class="form-group">  
+          <div class="field">  
             <%= f.label :comments %>
-            <%= f.text_area :comments, class: "form-control" %>
+            <%= f.text_area :comments %>
           </div>
   
-          <%= f.submit "Submit", class: "btn btn-default" %>
+          <%= f.submit "Submit", class: "ui button primary" %>
         <% end %>
       </div>
     </div>

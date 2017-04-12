@@ -7,7 +7,7 @@
         <p>Sign up for free and get basic access to the community</p>
       <% end %>
       <div class="ui form">
-        <p class="ui dividing header">Sign up</p>
+        <h2 class="ui dividing header">Sign up</h2>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: 'pro_form'} ) do |f| %>
           <%= devise_error_messages! %>
           
@@ -45,10 +45,10 @@
               <%= label_tag :card_month, "Card Expiration" %>
               <div class="two fields">
                 <div class="ten wide field">
-                  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "ui fluid dropdown"} %>
+                  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "ui dropdown"} %>
                 </div>
                 <div class="six wide field">
-                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "ui fluid dropdown"} %>
+                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "ui dropdown"} %>
                 </div>
               </div>
               
