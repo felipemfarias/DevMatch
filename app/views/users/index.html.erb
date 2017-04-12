@@ -1,36 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h1 class="text-center">DevMatch Community</h1>
-      <p class="text-center">Welcome to the DevMatch community. Users must fill out a profile in order to be visible in the community</p>
-      <ul>
-        <% @users.each do |user| %>
-          <% if user.profile %>
-            <li class="list-unstyled">
-              <div class="well row <%= cycle('white-bg', '') %>">
-                <div class="col-sm-4 text-center">
-                  <% if user.profile.avatar %>
-                    <%= link_to user do %>
-                      <%= image_tag user.profile.avatar.url, class: "user-index-avatar" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div>
-                  <%= link_to user do %>
-                    <h2><%= user.profile.first_name %> <%= user.profile.last_name %></h2>
-                  <% end %>
-                  <p>
-                    <%= user.profile.job_title %>
-                    <% if user.plan_id == 2 %>
-                      <span class="label label-warning">PRO</span>
-                    <% end %>
-                  </p>
-                </div>
-              </div>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
+<div class="ui container">
+  <div class="ui header">
+    <h1>DevMatch Community</h1>
+    <p>Welcome to the DevMatch community. Users must fill out their profile in order to be visible in the community</p>
+  </div>
+  
+  <div class="ui centered cards">
+    <% @users.each do |user| %>
+      <% if user.profile %>
+        <div class="ui card">
+          <div class="image">
+            <%= image_tag user.profile.avatar.url %>
+          </div>
+          <div class="center aligned content">
+            <span class="header"><%= user.profile.first_name %> <%= user.profile.last_name %></span>
+            <%= user.profile.job_title %><br>
+            <% if user.plan_id == 2 %>
+              <div class="ui yellow label">PRO</div>
+            <% else %>
+              <div class="ui label">BASIC</div>
+            <% end %>
+          </div>
+          <div class="center aligned content">
+            <%= link_to "View Profile", user_path(id: user.id) %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

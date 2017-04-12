@@ -1,20 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <%= image_tag @user.profile.avatar.url, class: "avatar-show-img" %>
+<div class="ui container">
+  <div class="ui grid">
+    <div class="three wide column">
+      <div class="ui raised center aligned segments">
+        <div class="ui segment">
+          <%= image_tag @user.profile.avatar.url, class: "ui centered circular image" %>
+        </div>
+        <div class="ui segment">
+          <h2><%= @user.profile.first_name %> <%= @user.profile.last_name %></h2>
+          <%= @user.profile.job_title %>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h1><%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
-      <h3><span class="job-title-icon"><%= job_title_icon %></span> <%= @user.profile.job_title %></h3>
-      <div class="well profile-block profile-description">
-        <h3>Description</h3>
-        <%= @user.profile.description %>
+    <div class="eight wide column">
+      <div class="ui raised green segment">
+        <div class="ui header">
+          Description
+        </div>
+        <p><%= @user.profile.description %></p>
       </div>
       <% if current_user.plan_id == 2 %>
-        <div class="well profile-block profile-contact-info">
-          <h3>Contact Information</h3>
-          <%= @user.profile.phone_number %><br>
-          <%= @user.profile.contact_email %>
+        <div class="ui raised blue segment">
+          <div class="ui header">
+            Contact Information
+          </div>
+          <label>Phone: </label><%= @user.profile.phone_number %></br>
+          <label>Email: </label><%= @user.profile.contact_email %>
         </div>
       <% end %>
     </div>
